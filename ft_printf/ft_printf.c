@@ -66,25 +66,33 @@ void    ft_putnbr(int nbr, int *count)
 //     }
 // }
 
-void ft_puthex(int nb, int* count)
-{
-    char c;
+// void ft_puthex(int nb, int* count)
+// {
+//     char c;
 
+//     if(nb >= 16)
+//     {
+//         ft_puthex(nb / 16, count);
+//         ft_puthex(nb % 16, count);
+//     }
+//     if(nb < 10)
+//     {
+//         c = nb + 48;
+//         *count += write(1, &c, 1);
+//     }
+//     else if(nb < 16)
+//     {
+//         c = nb + 87;
+//         *count += write(1, &c, 1);
+//     }
+// }
+
+void ft_puthex(unsigned int nb, int* count)
+{
+    char *hex = "0123456789abcdef";
     if(nb >= 16)
-    {
         ft_puthex(nb / 16, count);
-        ft_puthex(nb % 16, count);
-    }
-    if(nb < 10)
-    {
-        c = nb + 48;
-        *count += write(1, &c, 1);
-    }
-    else if(nb < 16)
-    {
-        c = nb + 87;
-        *count += write(1, &c, 1);
-    }
+    *count += write(1, &hex[nb % 16], 1);
 }
 
 void    ft_putstr(char *str, int *count)
